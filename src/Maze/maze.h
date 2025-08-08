@@ -85,6 +85,8 @@ class Maze {
                    std::vector<Coordinate> visited_1,
                    std::vector<Coordinate> visited_2);
 
+    void set_png_save_path(std::string path);
+
     float *g;
 
  private:
@@ -96,6 +98,8 @@ class Maze {
     void draw_path(std::vector<Coordinate> path);
     void add_obstacle(int x, int y);
 
+    void save_current_maze();
+
     cv::Mat maze_;
     int grid_size_ = 11;
     int x_range_ = 51;
@@ -105,6 +109,9 @@ class Maze {
 
     Coordinate start_;
     Coordinate goal_;
+
+    std::string png_save_path_ = "../data/png/";
+    int frame_count_ = 0;
 };
 
 #endif

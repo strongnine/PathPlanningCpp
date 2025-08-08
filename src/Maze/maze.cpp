@@ -38,6 +38,8 @@ void Maze::init(Coordinate start, Coordinate goal) {
     draw_scatter(goal.x, goal.y, RECTANGLE, cv::Scalar(0, 255, 0));
 }
 
+void Maze::set_png_save_path(std::string path) { png_save_path_ = path; }
+
 void Maze::animation(std::vector<Coordinate> path,
                      std::vector<Coordinate> visited) {
     for (int i = 0; i < visited.size(); i++) {
@@ -46,15 +48,17 @@ void Maze::animation(std::vector<Coordinate> path,
             continue;
         draw_scatter(point.x, point.y, CIRCLE, cv::Scalar(128, 128, 128));
         cv::imshow("maze", maze_);
+        save_current_maze();
         cv::waitKey(1);
     }
     draw_path(path);
     cv::imshow("maze", maze_);
+    save_current_maze();
     cv::waitKey(0);
 }
 
 void Maze::animation(std::vector<std::vector<Coordinate>> path_iter,
-               std::vector<std::vector<Coordinate>> visited_iter) {
+                     std::vector<std::vector<Coordinate>> visited_iter) {
     int n_iter = path_iter.size();
     for (int i = 0; i < n_iter; i++) {
         std::vector<Coordinate> path = path_iter[i];
@@ -189,4 +193,9 @@ void Maze::add_obstacle(int x, int y) {
     cv::Point2d point_br =
         cv::Point2d(center.x + half_grid_size, center.y + half_grid_size);
     cv::rectangle(maze_, point_tl, point_br, cv::Scalar(0, 0, 0), cv::FILLED);
+}
+
+void Maze::save_current_maze() {
+    cv::imwrite(png_save_path_ + std::to_string(frame_count_) + ".png", maze_);
+    frame_count_++;
 }
