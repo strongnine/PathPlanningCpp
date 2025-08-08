@@ -6,6 +6,7 @@ enum HEURISTIC_TYPE {
     EUCLIDEAN = 2,
 };
 
+// Anytime Repairing A_star
 class ARA_star : public PathSearch {
  public:
     ARA_star();

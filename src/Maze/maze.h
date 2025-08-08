@@ -79,6 +79,8 @@ class Maze {
     void init(Coordinate start, Coordinate goal);
     void animation(std::vector<Coordinate> path,
                    std::vector<Coordinate> visited);
+    void animation(std::vector<std::vector<Coordinate>> path_iter,
+                   std::vector<std::vector<Coordinate>> visited_iter);
     void animation(std::vector<Coordinate> path,
                    std::vector<Coordinate> visited_1,
                    std::vector<Coordinate> visited_2);

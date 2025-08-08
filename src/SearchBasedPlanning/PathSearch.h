@@ -16,8 +16,10 @@ class PathSearch {
                            std::vector<Coordinate>& visited_order, float* g);
 
  protected:
-    float calc_cost(const Coordinate& p1, const Coordinate& p2, float* g);
-    bool is_collision(const Coordinate& p1, const Coordinate& p2, float* g);
+    std::vector<Coordinate> get_neighbors(const Coordinate& p, const float* g);
+    float calc_cost(const Coordinate& p1, const Coordinate& p2, const float* g);
+    bool is_collision(const Coordinate& p1, const Coordinate& p2,
+                      const float* g);
     void extract_path(std::vector<Coordinate>& path, Coordinate* parent);
 
     int x_range_ = 51;

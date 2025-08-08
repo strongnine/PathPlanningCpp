@@ -11,6 +11,7 @@ ARA_star::ARA_star() {}
 
 ARA_star::~ARA_star() {
     SAFE_DELETE(parent_);
+    SAFE_DELETE(visited_);
     SAFE_DELETE(g_);
 }
 
@@ -134,6 +135,7 @@ float ARA_star::calc_f_value(const Coordinate& p, const float* g, float e) {
     float cost = g[p.y * x_range_ + p.x];
     return cost + e * heuristic(p);
 }
+
 float ARA_star::update_e(std::map<Coordinate, float>& open_set,
                          std::map<Coordinate, float>& incons_set) {
     float v = FLT_MAX;

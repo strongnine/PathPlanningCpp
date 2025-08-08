@@ -53,6 +53,16 @@ void Maze::animation(std::vector<Coordinate> path,
     cv::waitKey(0);
 }
 
+void Maze::animation(std::vector<std::vector<Coordinate>> path_iter,
+               std::vector<std::vector<Coordinate>> visited_iter) {
+    int n_iter = path_iter.size();
+    for (int i = 0; i < n_iter; i++) {
+        std::vector<Coordinate> path = path_iter[i];
+        std::vector<Coordinate> visited = visited_iter[i];
+        animation(path, visited);
+    }
+}
+
 void Maze::animation(std::vector<Coordinate> path,
                      std::vector<Coordinate> visited_1,
                      std::vector<Coordinate> visited_2) {

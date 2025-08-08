@@ -7,7 +7,7 @@ foreach( testsourcefile ${APP_SOURCES} )
     # Used a simple string replace, to cut off .cpp.
     string( REPLACE ".cpp" "" testname ${testsourcefile} )
     if ( NOT (${testname} STREQUAL PathSearch) )
-        message( ${testname} )
+        # message( ${testname} )
         add_executable( ${testname} ${testsourcefile} PathSearch.cpp )
         add_dependencies( ${testname} Maze )
         target_link_libraries( ${testname} ${OpenCV_LIBS} )

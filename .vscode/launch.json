@@ -8,7 +8,7 @@
             "name": "build and debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/src/SearchBasedPlanning/ARA_star",
+            "program": "${workspaceFolder}/build/src/SearchBasedPlanning/LRTA_star",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
